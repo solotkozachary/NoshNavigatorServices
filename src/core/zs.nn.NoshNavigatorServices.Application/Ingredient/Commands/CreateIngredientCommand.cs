@@ -1,9 +1,11 @@
-﻿namespace zs.nn.NoshNavigatorServices.Domain.Entity.Recipe
+﻿using MediatR;
+
+namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Commands
 {
     /// <summary>
-    /// An ingredient in a recipe.
+    /// A command to create an ingredient.
     /// </summary>
-    public class Ingredient : NoshNavigatorEntity
+    public class CreateIngredientCommand : IRequest<string>
     {
         /// <summary>
         /// Gets or sets the name of the ingredient.
@@ -24,10 +26,5 @@
         /// Gets or sets the foreign key property that links the ingredient to its associated recipe.
         /// </summary>
         public string RecipeId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the navigation property to the recipe to which the ingredient belongs.
-        /// </summary>
-        public Recipe Recipe { get; set; }
     }
 }

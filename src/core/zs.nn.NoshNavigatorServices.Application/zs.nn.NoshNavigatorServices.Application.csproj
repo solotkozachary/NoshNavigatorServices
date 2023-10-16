@@ -15,18 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Ingredient\Commands\" />
     <Folder Include="Ingredient\Handlers\" />
-    <Folder Include="Ingredient\Validators\" />
-    <Folder Include="Ingredient\Queries\" />
-    <Folder Include="InstructionStep\Commands\" />
     <Folder Include="InstructionStep\Handlers\" />
-    <Folder Include="InstructionStep\Validators\" />
     <Folder Include="InstructionStep\Queries\" />
-    <Folder Include="Recipe\Commands\" />
     <Folder Include="Recipe\Handlers\" />
-    <Folder Include="Recipe\Validators\" />
-    <Folder Include="Recipe\Queries\" />
   </ItemGroup>
 
 </Project>
