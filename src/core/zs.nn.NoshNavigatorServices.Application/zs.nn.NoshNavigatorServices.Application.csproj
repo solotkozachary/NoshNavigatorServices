@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\zs.nn.NoshNavigatorServices.Events\zs.nn.NoshNavigatorServices.Events.csproj" />
+  </ItemGroup>
+
+</Project>
