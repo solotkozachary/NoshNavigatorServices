@@ -8,4 +8,26 @@
     <ProjectReference Include="..\zs.nn.NoshNavigatorServices.Events\zs.nn.NoshNavigatorServices.Events.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Enumerations\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Entity\" />
+    <Folder Include="Ingredient\Commands\" />
+    <Folder Include="Ingredient\Handlers\" />
+    <Folder Include="Ingredient\Validators\" />
+    <Folder Include="Ingredient\Queries\" />
+    <Folder Include="InstructionStep\Commands\" />
+    <Folder Include="InstructionStep\Handlers\" />
+    <Folder Include="InstructionStep\Validators\" />
+    <Folder Include="InstructionStep\Queries\" />
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Interfaces\Persistence\InstructionStep\" />
+    <Folder Include="Interfaces\Persistence\Ingredient\" />
+    <Folder Include="Interfaces\Persistence\Recipe\" />
+    <Folder Include="Recipe\Commands\" />
+    <Folder Include="Recipe\Handlers\" />
+    <Folder Include="Recipe\Validators\" />
+    <Folder Include="Recipe\Queries\" />
+  </ItemGroup>
+
 </Project>
