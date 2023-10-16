@@ -10,7 +10,7 @@ namespace zs.nn.NoshNavigatorServices.Domain.Entity
         /// <summary>
         /// The unique identifier of the entity.
         /// </summary>
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// A flag to indicate if the entity record is active.

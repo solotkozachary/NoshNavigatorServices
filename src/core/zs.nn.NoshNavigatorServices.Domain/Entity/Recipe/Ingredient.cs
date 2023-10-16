@@ -1,4 +1,6 @@
-﻿namespace zs.nn.NoshNavigatorServices.Domain.Entity.Recipe
+﻿using System;
+
+namespace zs.nn.NoshNavigatorServices.Domain.Entity.Recipe
 {
     /// <summary>
     /// An ingredient in a recipe.
@@ -23,7 +25,7 @@
         /// <summary>
         /// Gets or sets the foreign key property that links the ingredient to its associated recipe.
         /// </summary>
-        public string RecipeId { get; set; }
+        public Guid RecipeId { get; set; }
 
         /// <summary>
         /// Gets or sets the navigation property to the recipe to which the ingredient belongs.

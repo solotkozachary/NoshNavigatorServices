@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System;
 
 namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Commands
 {
@@ -25,6 +26,6 @@ namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Commands
         /// <summary>
         /// Gets or sets the foreign key property that links the ingredient to its associated recipe.
         /// </summary>
-        public string RecipeId { get; set; }
+        public Guid RecipeId { get; set; }
     }
 }

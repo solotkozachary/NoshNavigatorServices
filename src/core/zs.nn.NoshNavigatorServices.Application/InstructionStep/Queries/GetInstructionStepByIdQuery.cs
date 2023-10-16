@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using System;
 
-namespace zs.nn.NoshNavigatorServices.Application.Recipe.Queries
+namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Queries
 {
     /// <summary>
-    /// The query to retrieve a recipe by id.
+    /// The query to retrieve an instruction step by id.
     /// </summary>
-    public class GetRecipeByIdQuery : IRequest<Domain.Entity.Recipe.Recipe>
+    public class GetInstructionStepByIdQuery : IRequest<Domain.Entity.Recipe.InstructionStep>
     {
         /// <summary>
         /// The unique identifier of the entity.

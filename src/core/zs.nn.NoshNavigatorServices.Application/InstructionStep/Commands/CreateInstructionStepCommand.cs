@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System;
 
 namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Commands
 {
@@ -20,6 +21,6 @@ namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Commands
         /// <summary>
         /// Gets or sets the foreign key property that links the instruction step to its associated recipe.
         /// </summary>
-        public string RecipeId { get; set; }
+        public Guid RecipeId { get; set; }
     }
 }

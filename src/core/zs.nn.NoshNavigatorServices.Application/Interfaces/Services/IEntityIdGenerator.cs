@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Threading;
+using System;
 
 namespace zs.nn.NoshNavigatorServices.Application.Interfaces.Services
 {
@@ -12,6 +13,6 @@ namespace zs.nn.NoshNavigatorServices.Application.Interfaces.Services
         /// Generate a unique identifier for an entity.
         /// </summary>
         /// <returns>A unique identifier for an entity.</returns>
-        Task<string> GenerateId(CancellationToken cancellationToken);
+        Task<Guid> GenerateId(CancellationToken cancellationToken);
     }
 }

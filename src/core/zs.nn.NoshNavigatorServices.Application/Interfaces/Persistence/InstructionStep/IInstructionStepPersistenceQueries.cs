@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Threading;
+using System;
 
 namespace zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.InstructionStep
 {
@@ -14,6 +15,6 @@ namespace zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.Instruc
         /// <param name="id">The id to search by.</param>
         /// <param name="cancellationToken">Propagates process cancellation signal.</param>
         /// <returns>The entity found.</returns>
-        Task<Domain.Entity.Recipe.InstructionStep> GetById(string id, CancellationToken cancellationToken);
+        Task<Domain.Entity.Recipe.InstructionStep> GetById(Guid id, CancellationToken cancellationToken);
     }
 }

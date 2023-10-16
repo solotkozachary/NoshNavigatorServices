@@ -17,7 +17,6 @@
   <ItemGroup>
     <Folder Include="Ingredient\Handlers\" />
     <Folder Include="InstructionStep\Handlers\" />
-    <Folder Include="InstructionStep\Queries\" />
     <Folder Include="Recipe\Handlers\" />
   </ItemGroup>
 
