@@ -13,7 +13,7 @@ namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Handlers
     /// <summary>
     /// The handler responsible for creating a new ingredient for a recipe.
     /// </summary>
-    public class CreateIngredientHandler : IRequestHandler<CreateIngredientCommand, string>
+    public class CreateIngredientHandler : IRequestHandler<CreateIngredientCommand, Guid>
     {
         private readonly ILogger<CreateIngredientHandler> _logger;
         private readonly IMediator _mediator;
@@ -58,7 +58,7 @@ namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Handlers
         {
             _logger.LogTrace("Enter ValidateRecipe - RecipeId:{RecipeId}", recipeId);
 
-            var existing = await _mediator.Send(new GetRecipeByIdQuery { Id = recipeId, MustExist = true });
+            _ = await _mediator.Send(new GetRecipeByIdQuery { Id = recipeId, MustExist = true }, cancellationToken);
 
             _logger.LogTrace("Exit ValidateRecipe - RecipeId:{RecipeId}", recipeId);
         }
@@ -68,7 +68,7 @@ namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Handlers
             _logger.LogTrace("Enter BuildIngredient - RecipeId:{RecipeId}", request.RecipeId);
 
             var entity = await _mediator.Send(new InitializeEntityCommand<Domain.Entity.Recipe.Ingredient>()
-            { EntityCreationSourceId = request.RecipeId.ToString() });
+            { EntityCreationSourceId = request.RecipeId.ToString() }, cancellationToken);
 
             entity.Name = request.Name;
             entity.Description = request.Description;

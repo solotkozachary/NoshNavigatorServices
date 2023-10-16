@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System;
 using System.Collections.Generic;
 
 namespace zs.nn.NoshNavigatorServices.Application.Recipe.Commands
@@ -6,7 +7,7 @@ namespace zs.nn.NoshNavigatorServices.Application.Recipe.Commands
     /// <summary>
     /// A command to create a recipe.
     /// </summary>
-    public class CreateRecipeCommand : IRequest<string>
+    public class CreateRecipeCommand : IRequest<Guid>
     {
         /// <summary>
         /// Gets or sets the name of the recipe.
@@ -21,12 +22,12 @@ namespace zs.nn.NoshNavigatorServices.Application.Recipe.Commands
         /// <summary>
         /// Gets or sets the collection of ingredients associated with the recipe.
         /// </summary>
-        public ICollection<RecipeInstructionStep> Ingredients { get; set; }
+        public ICollection<RecipeIngredient> Ingredients { get; set; }
 
         /// <summary>
         /// Gets or sets the collection of instruction steps for the recipe.
         /// </summary>
-        public ICollection<RecipeIngredient> InstructionSteps { get; set; }
+        public ICollection<RecipeInstructionStep> InstructionSteps { get; set; }
     }
 
     public class RecipeInstructionStep
