@@ -6,7 +6,7 @@ namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Commands
     /// <summary>
     /// A command to create an ingredient.
     /// </summary>
-    public class CreateIngredientCommand : IRequest<string>
+    public class CreateIngredientCommand : IRequest<Guid>
     {
         /// <summary>
         /// Gets or sets the name of the ingredient.
