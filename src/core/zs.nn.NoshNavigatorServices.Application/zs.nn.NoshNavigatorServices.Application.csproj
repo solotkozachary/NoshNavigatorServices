@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,9 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Enumerations\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Entity\" />
+    <PackageReference Include="FluentValidation" Version="11.7.1" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Ingredient\Commands\" />
     <Folder Include="Ingredient\Handlers\" />
     <Folder Include="Ingredient\Validators\" />
@@ -20,10 +23,6 @@
     <Folder Include="InstructionStep\Handlers\" />
     <Folder Include="InstructionStep\Validators\" />
     <Folder Include="InstructionStep\Queries\" />
-    <Folder Include="Interfaces\Services\" />
-    <Folder Include="Interfaces\Persistence\InstructionStep\" />
-    <Folder Include="Interfaces\Persistence\Ingredient\" />
-    <Folder Include="Interfaces\Persistence\Recipe\" />
     <Folder Include="Recipe\Commands\" />
     <Folder Include="Recipe\Handlers\" />
     <Folder Include="Recipe\Validators\" />
