@@ -8,10 +8,10 @@ namespace zs.nn.NoshNavigatorServices.Persistence.MsSql.Services.Recipe
 {
     public class RecipePersistenceCommands : IRecipePersistenceCommands
     {
-        private readonly RecipeContext _context;
+        private readonly NoshNavigatorServicesDbContext _context;
         private readonly ILogger<RecipePersistenceCommands> _logger;
 
-        public RecipePersistenceCommands(RecipeContext context, ILogger<RecipePersistenceCommands> logger)
+        public RecipePersistenceCommands(NoshNavigatorServicesDbContext context, ILogger<RecipePersistenceCommands> logger)
         {
             _context = context;
             _logger = logger;

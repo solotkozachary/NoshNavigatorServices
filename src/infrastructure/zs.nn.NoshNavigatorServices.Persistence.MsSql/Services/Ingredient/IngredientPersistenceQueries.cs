@@ -12,10 +12,10 @@ namespace zs.nn.NoshNavigatorServices.Persistence.MsSql.Services.Ingredient
 {
     public class IngredientPersistenceQueries : IIngredientPersistenceQueries
     {
-        private readonly RecipeContext _context;
+        private readonly NoshNavigatorServicesDbContext _context;
         private readonly ILogger<IngredientPersistenceQueries> _logger;
 
-        public IngredientPersistenceQueries(RecipeContext context, ILogger<IngredientPersistenceQueries> logger)
+        public IngredientPersistenceQueries(NoshNavigatorServicesDbContext context, ILogger<IngredientPersistenceQueries> logger)
         {
             _context = context;
             _logger = logger;
