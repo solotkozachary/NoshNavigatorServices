@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MediatR.Extensions.FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.Ingredient;
@@ -25,7 +26,10 @@ namespace zs.nn.NoshNavigatorServices.Infrastructure
         /// <param name="services">The service pipeline.</param>
         public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+            // MediatR with FluentValidation
+            var domainAssembly = AppDomain.CurrentDomain.GetAssemblies();
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(domainAssembly));
+            services.AddFluentValidation(domainAssembly);
 
             // Application utilities
             services.AddTransient<IEntityIdGenerator, EntityIdGenerator>();
@@ -42,7 +46,6 @@ namespace zs.nn.NoshNavigatorServices.Infrastructure
             services.AddSingleton<IInstructionStepPersistenceQueries, InstructionStepPersistenceQueries>();
             services.AddSingleton<IRecipePersistenceCommands, RecipePersistenceCommands>();
             services.AddSingleton<IRecipePersistenceQueries, RecipePersistenceQueries>();
-
 
             return services;
         }

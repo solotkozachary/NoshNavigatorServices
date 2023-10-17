@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\core\zs.nn.NoshNavigatorServices.Application\zs.nn.NoshNavigatorServices.Application.csproj" />
     <ProjectReference Include="..\zs.nn.NoshNavigatorServices.Persistence.MsSql\zs.nn.NoshNavigatorServices.Persistence.MsSql.csproj" />
   </ItemGroup>
