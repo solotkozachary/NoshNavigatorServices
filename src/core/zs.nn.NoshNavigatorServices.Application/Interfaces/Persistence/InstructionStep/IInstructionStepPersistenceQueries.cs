@@ -21,9 +21,9 @@ namespace zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.Instruc
         /// <summary>
         /// Retrieve a list of instruction steps by recipe id.
         /// </summary>
-        /// <param name="RecipeId"></param>
+        /// <param name="recipeId"></param>
         /// <param name="cancellationToken"></param>
         /// <returns>A list of entities found.</returns>
-        Task<ICollection<Domain.Entity.Recipe.InstructionStep>> GetByRecipeId(Guid RecipeId, CancellationToken cancellationToken);
+        Task<ICollection<Domain.Entity.Recipe.InstructionStep>> GetByRecipeId(Guid recipeId, CancellationToken cancellationToken);
     }
 }
