@@ -15,3 +15,6 @@
 /src/infrastructure/zs.nn.NoshNavigatorServices.Persistence.MsSql/obj
 /src/presentation/zs.nn.NoshNavigatorServices.Presentation.RestApi/bin/Debug/net6.0
 /src/presentation/zs.nn.NoshNavigatorServices.Presentation.RestApi/obj
+/src/core/zs.nn.NoshNavigatorServices.Application/bin/Debug/netstandard2.1
+/src/core/zs.nn.NoshNavigatorServices.Domain/bin/Debug/netstandard2.1
+/src/core/zs.nn.NoshNavigatorServices.Events/bin/Debug/netstandard2.1
