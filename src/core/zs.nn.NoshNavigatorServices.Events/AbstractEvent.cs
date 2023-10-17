@@ -32,6 +32,11 @@ namespace zs.nn.NoshNavigatorServices.Events
         public string EventId { get; set; }
 
         /// <summary>
+        /// The event type.
+        /// </summary>
+        public Type EventType { get { return typeof(T); } }
+
+        /// <summary>
         /// The version of the event, which follows the version of the domain.
         /// </summary>
         public string Version { get { return DomainVersionProvider.DomainVersion; } }

@@ -10,6 +10,8 @@ using zs.nn.NoshNavigatorServices.Application.InstructionStep.Commands;
 using zs.nn.NoshNavigatorServices.Application.InstructionStep.Queries;
 using zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.InstructionStep;
 using zs.nn.NoshNavigatorServices.Application.Recipe.Queries;
+using zs.nn.NoshNavigatorServices.Events.Recipe;
+using zs.nn.NoshNavigatorServices.Events;
 
 namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Handlers
 {
@@ -21,16 +23,19 @@ namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Handlers
         private readonly ILogger<CreateInstructionStepHandler> _logger;
         private readonly IMediator _mediator;
         private readonly IInstructionStepPersistenceCommands _commands;
+        private readonly INoshNavigatorEventService<InstructionStepCreatedEvent, Domain.Entity.Recipe.InstructionStep> _eventService;
 
         public CreateInstructionStepHandler(
             ILogger<CreateInstructionStepHandler> logger,
             IMediator mediator,
-            IInstructionStepPersistenceCommands commands
+            IInstructionStepPersistenceCommands commands,
+            INoshNavigatorEventService<InstructionStepCreatedEvent, Domain.Entity.Recipe.InstructionStep> eventService
             )
         {
             _logger = logger;
             _mediator = mediator;
             _commands = commands;
+            _eventService = eventService;
         }
 
         public async Task<Guid> Handle(CreateInstructionStepCommand request, CancellationToken cancellationToken)
@@ -51,6 +56,8 @@ namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Handlers
             await UpdateRecipeInstructionStepSequence(entity, cancellationToken);
 
             await _commands.Create(entity, cancellationToken);
+
+            await _eventService.PublishNoshNavigatorEvent(new InstructionStepCreatedEvent(entity), cancellationToken);
 
             _logger.LogInformation("Ingredient created - RecipeId:{RecipeId}   InstructionStepId:{InstructionStepId}", entity.RecipeId, entity.Id);
 

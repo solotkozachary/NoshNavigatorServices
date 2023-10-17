@@ -5,7 +5,7 @@ using zs.nn.NoshNavigatorServices.Domain.Entity.Recipe;
 
 namespace zs.nn.NoshNavigatorServices.Persistence.MsSql
 {
-    public class RecipeContext : DbContext
+    public class NoshNavigatorServicesDbContext : DbContext
     {
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }

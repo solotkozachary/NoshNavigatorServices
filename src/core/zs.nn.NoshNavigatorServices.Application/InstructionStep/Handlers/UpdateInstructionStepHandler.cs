@@ -6,6 +6,8 @@ using System;
 using zs.nn.NoshNavigatorServices.Application.InstructionStep.Commands;
 using zs.nn.NoshNavigatorServices.Application.InstructionStep.Queries;
 using zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.InstructionStep;
+using zs.nn.NoshNavigatorServices.Events.Recipe;
+using zs.nn.NoshNavigatorServices.Events;
 
 namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Handlers
 {
@@ -17,36 +19,41 @@ namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Handlers
         private readonly ILogger<UpdateInstructionStepHandler> _logger;
         private readonly IInstructionStepPersistenceCommands _commands;
         private readonly IMediator _mediator;
+        private readonly INoshNavigatorEventService<InstructionStepUpdatedEvent, Domain.Entity.Recipe.InstructionStep> _eventService;
 
         public UpdateInstructionStepHandler(
             ILogger<UpdateInstructionStepHandler> logger,
             IInstructionStepPersistenceCommands commands,
-            IMediator mediator
+            IMediator mediator,
+            INoshNavigatorEventService<InstructionStepUpdatedEvent, Domain.Entity.Recipe.InstructionStep> eventService
             )
         {
             _logger = logger;
             _commands = commands;
             _mediator = mediator;
+            _eventService = eventService;
         }
 
         public async Task<Guid> Handle(UpdateInstructionStepCommand request, CancellationToken cancellationToken)
         {
             _logger.LogTrace("Enter UpdateInstructionStepHandler - InstructionStepId:{InstructionStepId}", request.InstructionStepId);
 
-            var instructionStep = await _mediator.Send(new GetInstructionStepByIdQuery
+            var entity = await _mediator.Send(new GetInstructionStepByIdQuery
             {
                 Id = request.InstructionStepId,
                 MustExist = true
             }, cancellationToken);
 
-            instructionStep.SequenceNumber = request.SequenceNumber;
-            instructionStep.Description = request.Description;
+            entity.SequenceNumber = request.SequenceNumber;
+            entity.Description = request.Description;
 
-            await _commands.Update(instructionStep, cancellationToken);
+            await _commands.Update(entity, cancellationToken);
+
+            await _eventService.PublishNoshNavigatorEvent(new InstructionStepUpdatedEvent(entity), cancellationToken);
 
             _logger.LogTrace("Exit UpdateInstructionStepHandler - InstructionStepId:{InstructionStepId}", request.InstructionStepId);
 
-            return instructionStep.Id;
+            return entity.Id;
         }
     }
 }

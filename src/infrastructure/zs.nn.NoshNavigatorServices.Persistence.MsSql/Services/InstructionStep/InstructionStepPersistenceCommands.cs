@@ -7,10 +7,10 @@ namespace zs.nn.NoshNavigatorServices.Persistence.MsSql.Services.InstructionStep
 {
     public class InstructionStepPersistenceCommands : IInstructionStepPersistenceCommands
     {
-        private readonly RecipeContext _context;
+        private readonly NoshNavigatorServicesDbContext _context;
         private readonly ILogger<InstructionStepPersistenceCommands> _logger;
 
-        public InstructionStepPersistenceCommands(RecipeContext context, ILogger<InstructionStepPersistenceCommands> logger)
+        public InstructionStepPersistenceCommands(NoshNavigatorServicesDbContext context, ILogger<InstructionStepPersistenceCommands> logger)
         {
             _context = context;
             _logger = logger;

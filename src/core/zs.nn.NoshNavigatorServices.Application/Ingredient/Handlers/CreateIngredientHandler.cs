@@ -7,6 +7,8 @@ using zs.nn.NoshNavigatorServices.Application.Entity.Commands;
 using zs.nn.NoshNavigatorServices.Application.Ingredient.Commands;
 using zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.Ingredient;
 using zs.nn.NoshNavigatorServices.Application.Recipe.Queries;
+using zs.nn.NoshNavigatorServices.Events.Recipe;
+using zs.nn.NoshNavigatorServices.Events;
 
 namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Handlers
 {
@@ -18,16 +20,19 @@ namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Handlers
         private readonly ILogger<CreateIngredientHandler> _logger;
         private readonly IMediator _mediator;
         private readonly IIngredientPersistenceCommands _commands;
+        private readonly INoshNavigatorEventService<IngredientCreatedEvents, Domain.Entity.Recipe.Ingredient> _eventService;
 
         public CreateIngredientHandler(
             ILogger<CreateIngredientHandler> logger,
             IMediator mediator,
-            IIngredientPersistenceCommands commands
+            IIngredientPersistenceCommands commands,
+            INoshNavigatorEventService<IngredientCreatedEvents, Domain.Entity.Recipe.Ingredient> eventService
             )
         {
             _logger = logger;
             _mediator = mediator;
             _commands = commands;
+            _eventService = eventService;
         }
 
         public async Task<Guid> Handle(CreateIngredientCommand request, CancellationToken cancellationToken)
@@ -46,6 +51,8 @@ namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Handlers
             }
 
             await _commands.Create(entity, cancellationToken);
+
+            await _eventService.PublishNoshNavigatorEvent(new IngredientCreatedEvents(entity), cancellationToken);
 
             _logger.LogInformation("Ingredient created - RecipeId:{RecipeId}   IngredientId:{IngredientId}", entity.RecipeId, entity.Id);
 

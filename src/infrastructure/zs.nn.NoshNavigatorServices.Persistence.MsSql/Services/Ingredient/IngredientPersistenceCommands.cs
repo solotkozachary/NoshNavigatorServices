@@ -10,11 +10,11 @@ namespace zs.nn.NoshNavigatorServices.Persistence.MsSql.Services.Ingredient
     /// </summary>
     public class IngredientPersistenceCommands : IIngredientPersistenceCommands
     {
-        private readonly RecipeContext _context;
+        private readonly NoshNavigatorServicesDbContext _context;
         private readonly ILogger<IngredientPersistenceCommands> _logger;
 
         public IngredientPersistenceCommands(
-            RecipeContext context,
+            NoshNavigatorServicesDbContext context,
             ILogger<IngredientPersistenceCommands> logger
             )
         {
