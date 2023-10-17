@@ -14,5 +14,12 @@ namespace zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.Instruc
         /// <param name="entity">The entity to create.</param>
         /// <param name="cancellationToken">Propagates process cancellation signal.</param>
         Task Create(Domain.Entity.Recipe.InstructionStep entity, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Update an instruction step.
+        /// </summary>
+        /// <param name="entity">The entity to update.</param>
+        /// <param name="cancellationToken">Propagates process cancellation signal.</param>
+        Task Update(Domain.Entity.Recipe.InstructionStep entity, CancellationToken cancellationToken);
     }
 }

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Threading;
 using zs.nn.NoshNavigatorServices.Application.Ingredient.Queries;
 using zs.nn.NoshNavigatorServices.Application.Interfaces.Persistence.Ingredient;
-using System.Linq;
 
 namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Handlers
 {
@@ -34,7 +33,7 @@ namespace zs.nn.NoshNavigatorServices.Application.Ingredient.Handlers
 
             _logger.LogTrace("Exit GetIngredientsByRecipeIdHandler - RecipeId:{RecipeId}", request.RecipeId);
 
-            return results.ToList();
+            return results;
         }
     }
 }
