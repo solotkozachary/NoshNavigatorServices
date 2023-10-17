@@ -22,6 +22,4 @@ namespace zs.nn.NoshNavigatorServices.Events
         /// </summary>
         public Type EventDataType { get { return typeof(U); } }
     }
-    {
-    }
 }

@@ -1,8 +1,12 @@
-﻿using System;
+﻿using MediatR;
+using System;
 
-namespace zs.nn.NoshNavigatorServices.Domain.Entity.Recipe
+namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Commands
 {
-    public class InstructionStep : NoshNavigatorEntity
+    /// <summary>
+    /// A command to create an instruction step.
+    /// </summary>
+    public class CreateInstructionStepCommand : IRequest<Guid>
     {
         /// <summary>
         /// Gets or sets the order or sequence number indicating the position of the step in the recipe instructions.
@@ -18,10 +22,5 @@ namespace zs.nn.NoshNavigatorServices.Domain.Entity.Recipe
         /// Gets or sets the foreign key property that links the instruction step to its associated recipe.
         /// </summary>
         public Guid RecipeId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the navigation property to the recipe to which the instruction step belongs.
-        /// </summary>
-        public Recipe Recipe { get; set; }
     }
 }
