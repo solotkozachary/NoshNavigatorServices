@@ -51,13 +51,13 @@ namespace zs.nn.NoshNavigatorServices.Application.Recipe.Handlers
                 cancellationToken.ThrowIfCancellationRequested();
             }
 
+            await CreateRecipeMembers(entity.Id, request, cancellationToken);
+
             await _commands.Create(entity, cancellationToken);
 
             await _eventService.PublishNoshNavigatorEvent(new RecipeCreatedEvent(entity), cancellationToken);
 
             _logger.LogInformation("Ingredient created - RecipeId:{RecipeId}", entity.Id);
-
-            await CreateRecipeMembers(entity.Id, request, cancellationToken);
 
             _logger.LogTrace("Exit CreateRecipeHandler - RecipeId:{RecipeId}", entity.Id);
 
