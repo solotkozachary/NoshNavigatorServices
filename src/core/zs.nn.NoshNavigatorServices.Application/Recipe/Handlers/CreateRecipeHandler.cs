@@ -116,12 +116,8 @@ namespace zs.nn.NoshNavigatorServices.Application.Recipe.Handlers
         {
             _logger.LogTrace("Enter CreateRecipeInstructionSteps - RecipeId:{RecipeId}", id);
 
-            foreach (var instructionStep in instructionSteps) // Allow auto-updating of sequence correct any invalid sequence numbers.
-            {
-                await CreateRecipeInstructionStep(id, instructionStep, cancellationToken);
-            }
-
-            await Task.WhenAll(instructionSteps.Select(x => CreateRecipeInstructionStep(id, x, cancellationToken)).ToList());
+            // Allow auto-updating of sequence correct any invalid sequence numbers.
+            await Task.WhenAll(instructionSteps.Select(x => CreateRecipeInstructionStep(id, x, cancellationToken)).ToList()); 
 
             _logger.LogTrace("Exit CreateRecipeInstructionSteps - RecipeId:{RecipeId}", id);
         }

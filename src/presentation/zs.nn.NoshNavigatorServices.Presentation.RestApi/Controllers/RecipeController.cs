@@ -39,7 +39,7 @@ namespace zs.nn.NoshNavigatorServices.Presentation.RestApi.Controllers
             Description = "Accepts a recipe creation request and persists it to the database.",
             Tags = new[] { "Recipes" }
         )]
-        [SwaggerResponse(201, "Recipe created successfully and the URI to the new recipe is returned.", typeof(string))]
+        [SwaggerResponse(200, "Recipe created successfully. Returns the unique identifier of the recipe.", typeof(string))]
         [SwaggerResponse(400, "Bad request", typeof(NoshNavigatorException))]
         [SwaggerResponse(500, "Internal server error", typeof(NoshNavigatorException))]
         public async Task<IActionResult> Create(
@@ -52,11 +52,9 @@ namespace zs.nn.NoshNavigatorServices.Presentation.RestApi.Controllers
 
             var result = await _mediator.Send(command, cancellation);
 
-            var locationUri = new Uri(Url.Action("Get", new { id = result }));
-
             _logger.LogTrace("Exit CreateRecipe - RecipeId:{RecipeId}", result);
 
-            return Created(locationUri, result);
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
