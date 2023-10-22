@@ -32,7 +32,7 @@ namespace zs.nn.NoshNavigatorServices.Infrastructure
             services.AddFluentValidation(domainAssembly);
 
             // Application utilities
-            services.AddTransient<IEntityIdGenerator, EntityIdGenerator>();
+            services.AddScoped<IEntityIdGenerator, EntityIdGenerator>();
             services.AddScoped(typeof(IRequestHandler<,>), typeof(Application.Entity.Handlers.InitializeEntityHandler<,>));
 
             // Events
@@ -40,12 +40,12 @@ namespace zs.nn.NoshNavigatorServices.Infrastructure
 
             // Persistence
             services.AddDbContext<NoshNavigatorServicesDbContext>();
-            services.AddSingleton<IIngredientPersistenceCommands, IngredientPersistenceCommands>();
-            services.AddSingleton<IIngredientPersistenceQueries, IngredientPersistenceQueries>();
-            services.AddSingleton<IInstructionStepPersistenceCommands, InstructionStepPersistenceCommands>();
-            services.AddSingleton<IInstructionStepPersistenceQueries, InstructionStepPersistenceQueries>();
-            services.AddSingleton<IRecipePersistenceCommands, RecipePersistenceCommands>();
-            services.AddSingleton<IRecipePersistenceQueries, RecipePersistenceQueries>();
+            services.AddScoped<IIngredientPersistenceCommands, IngredientPersistenceCommands>();
+            services.AddScoped<IIngredientPersistenceQueries, IngredientPersistenceQueries>();
+            services.AddScoped<IInstructionStepPersistenceCommands, InstructionStepPersistenceCommands>();
+            services.AddScoped<IInstructionStepPersistenceQueries, InstructionStepPersistenceQueries>();
+            services.AddScoped<IRecipePersistenceCommands, RecipePersistenceCommands>();
+            services.AddScoped<IRecipePersistenceQueries, RecipePersistenceQueries>();
 
             return services;
         }
