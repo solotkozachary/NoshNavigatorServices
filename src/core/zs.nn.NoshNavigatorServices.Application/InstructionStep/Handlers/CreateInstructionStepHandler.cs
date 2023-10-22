@@ -63,7 +63,7 @@ namespace zs.nn.NoshNavigatorServices.Application.InstructionStep.Handlers
 
             _logger.LogTrace("Exit CreateInstructionStepHandler - RecipeId:{RecipeId}   InstructionStepId:{InstructionStepId}", request.RecipeId, entity.Id);
 
-            throw new NotImplementedException();
+            return entity.Id;
         }
 
         private async Task ValidateRecipe(Guid recipeId, CancellationToken cancellationToken)
